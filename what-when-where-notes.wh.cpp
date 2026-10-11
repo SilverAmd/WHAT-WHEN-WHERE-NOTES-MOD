@@ -107,13 +107,13 @@ Open **Settings** to customize the initial position, always-on-top mode, title, 
   $name: Title
 
 - notes:
-  - note1DefaultText: "Notar"
+  - note1DefaultText: "What"
     $name: Default note 1
     $description: "WHAT"
-  - note2DefaultText: "Mittwoch"
+  - note2DefaultText: "When"
     $name: Default note 2
     $description: "WHEN"
-  - note3DefaultText: "Leonberg"
+  - note3DefaultText: "Where"
     $name: Default note 3
     $description: "WHERE"
   - separator1: "-"
@@ -208,9 +208,9 @@ constexpr int ROW_STATUS_ACTIVE = 1;
 constexpr int ROW_STATUS_DONE = 2;
 
 struct NoteLine {
-    std::wstring part1 = L"Notar";
-    std::wstring part2 = L"Mittwoch";
-    std::wstring part3 = L"Leonberg";
+    std::wstring part1 = L"What";
+    std::wstring part2 = L"When";
+    std::wstring part3 = L"Where";
 };
 
 struct Settings {
@@ -218,9 +218,9 @@ struct Settings {
     int y = 60;
     bool alwaysOnTop = false;
 
-    std::wstring note1DefaultText = L"Notar";
-    std::wstring note2DefaultText = L"Mittwoch";
-    std::wstring note3DefaultText = L"Leonberg";
+    std::wstring note1DefaultText = L"What";
+    std::wstring note2DefaultText = L"When";
+    std::wstring note3DefaultText = L"Where";
     std::wstring separator1 = L"-";
     std::wstring separator2 = L"-";
     int gap = 34;
@@ -511,9 +511,8 @@ void AddRow() {
     }
 
     NoteLine row;
-    row.part1 = L"WHAT?";
-    row.part2 = L"WHEN?";
-    row.part3 = L"WHERE?";
+    // Use the configurable default note text for each newly added row.
+    SetDefaultRow(row);
 
     g_rows.push_back(row);
     g_rowStatus.push_back(ROW_STATUS_OPEN);
@@ -2161,8 +2160,14 @@ LRESULT CALLBACK OverlayWndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM l
             return 0;
 
         case WM_MOUSEWHEEL: {
-            int delta = GET_WHEEL_DELTA_WPARAM(wParam);
-            ApplyScaleDelta(hwnd, delta > 0 ? SCALE_STEP_PERCENT : -SCALE_STEP_PERCENT);
+            // Support high-resolution wheels and multi-notch wheel messages.
+            static int wheelDeltaRemainder = 0;
+            wheelDeltaRemainder += GET_WHEEL_DELTA_WPARAM(wParam);
+            int steps = wheelDeltaRemainder / WHEEL_DELTA;
+            wheelDeltaRemainder %= WHEEL_DELTA;
+            if (steps != 0) {
+                ApplyScaleDelta(hwnd, steps * SCALE_STEP_PERCENT);
+            }
             return 0;
         }
 
