@@ -100,11 +100,11 @@ Note: previously edited notes and selected appearance values are stored separate
 
 ## Version
 
-- **v1.3.1 (release candidate RC2 — not published)**: Documentation and screenshots added; English defaults aligned to **What / When / Where**, including newly added rows; improved mouse-wheel delta handling; explicit X/Y setting changes prioritized; and fully transparent pixels changed to alpha zero for click-through. **Windhawk compilation and runtime tests are required before release.**
+- **v1.3.1 (first GitHub release)**: English defaults aligned to **What / When / Where**, including newly added rows; improved mouse-wheel handling; updated window-position behavior; transparency click-through improvements; four preview screenshots; and expanded English documentation.
 
 ## Compatibility / testing
 
-Designed for Windows and the Windhawk mod environment. **The files in this archive have not been compiled or run on Windows by the assistant.** Please test the source inside Windhawk before making a public GitHub release.
+Designed for Windows and Windhawk. The author tested **v1.3.1** in Windhawk on Windows 11: successful compilation, adding new note rows, mouse-wheel resizing, middle-click reset, saving and restoring notes and task statuses after restart, and screenshot display in the mod's Details tab. Not every hardware, DPI or Windhawk configuration has been tested.
 
 ## License
 
