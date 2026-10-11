@@ -8,7 +8,7 @@
 
 - Up to **14 note rows**, each consisting of **WHAT - WHEN - WHERE**.
 - Click individual fields to edit; **Enter** to save, **Esc** to cancel; leaving an edit field saves.
-- The plus button adds a row, the minus button removes the last row, and the **X** next to each row deletes that row.
+- The plus button adds a row using the configured default WHAT/WHEN/WHERE texts, the minus button removes the last row, and the **X** next to each row deletes that row.
 - Each row has a clickable, three-state status indicator. **⚪ Gray = Open**, **🔴 Red = In Progress**, **🟢 Green = Completed**; completed rows are struck through.
 - Optional centered heading, adjustable spacing and fonts, text color, transparency, scaling and always-on-top mode.
 - **Resize instantly with the mouse wheel** — scroll up to enlarge the entire overlay, or down to shrink it.
@@ -100,7 +100,7 @@ Note: previously edited notes and selected appearance values are stored separate
 
 ## Version
 
-- **v1.3.1 (test candidate)**: Documentation added, defaults aligned with supplied configuration, explicit X/Y setting changes prioritized, and fully transparent pixels changed to alpha zero to allow underlying windows to receive clicks. This is not a verified release.
+- **v1.3.1 (release candidate RC2 — not published)**: Documentation and screenshots added; English defaults aligned to **What / When / Where**, including newly added rows; improved mouse-wheel delta handling; explicit X/Y setting changes prioritized; and fully transparent pixels changed to alpha zero for click-through. **Windhawk compilation and runtime tests are required before release.**
 
 ## Compatibility / testing
 
